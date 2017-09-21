@@ -4,15 +4,13 @@ open System
 open System.Net
 open FSharp.Data
 open HttpDomains
-open FSharp.Data.HtmlAttribute
+open System.Threading
 
 let Fetch (url:string) (requestData:RequestData)=
-    let headers = GetDefaultHeader()
     async{
-           let req = Http.AsyncRequest(url, headers = requestData.Headers, cookieContainer = requestData.Cookies,
-                                       customizeHttpRequest= fun req ->
-                                                                 req.Proxy <- requestData.Proxy.GetWebProxy()
-                                       ) 
-           
+           let! resp = Http.AsyncRequest(url, headers = requestData.Headers, cookieContainer = requestData.Cookies, timeout = (int requestData.Delay),
+                                         customizeHttpRequest = (fun req -> req.Proxy <- requestData.Proxy.GetWebProxy()
+                                                                            req))
+           return resp.StatusCode,resp.Body          
         }
 

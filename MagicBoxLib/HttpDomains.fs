@@ -2,14 +2,9 @@
 open System
 open System.Net
 
-type Ip = string
-type Port = int 
-type UserName = string
-type Password = string
-
 type SearchProxy =
-    |PrivateProxy of Ip * Port * UserName * Password
-    |PublicProxy of Ip * Port
+    |PrivateProxy of string * int * string * string
+    |PublicProxy of string * int
     member this.GetWebProxy() =
         match this with
         |PrivateProxy (ip,port,name, pass)-> 
@@ -47,7 +42,6 @@ type RequestData =
     {
        Cookies:CookieContainer
        Proxy:SearchProxy     
-       Headers:string*string list
+       Headers:seq<string*string>
        Delay: int<DelayInMs> 
-
      }
