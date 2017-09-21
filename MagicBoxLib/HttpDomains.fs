@@ -2,6 +2,7 @@
 module HttpDomains
 open System
 open System.Net
+open FSharp.Data
 
 type SearchProxy =
     |PrivateProxy of string * int * string * string
@@ -41,10 +42,16 @@ let GetDefaultHeaders =
 
 type [<Measure>] Milliseconds 
 
+type HttpMethod =
+    |Get
+    |Post
+
 type RequestData = 
     {
        Cookies:CookieContainer
        Proxy:SearchProxy     
        Headers:seq<string*string>
        Delay: int<Milliseconds> 
+       Method:HttpMethod 
+       UploadValues:seq<string*string>
      }

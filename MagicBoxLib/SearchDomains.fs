@@ -18,10 +18,10 @@ type IntOrString =
 type SearchEngine =
    {   SearchEngineName: string
        SearchBaseUrl: string
-       QueryParamName: string 
-       NextPageParamName: string
+       QueryParamName: string option
+       NextPageParamName: string option
        NextPageValue: IntOrString -> IntOrString option
-       PagesToScrape: int
-       AllOtherQueryParams: (string*string) list option
-       Parser: string -> SearchResult list option
+       PagesToScrape: int option
+       AllOtherQueryParams: Map<string,string> option
+       Parser: string -> SearchResult list option       
    }
