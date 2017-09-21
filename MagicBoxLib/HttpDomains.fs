@@ -5,6 +5,7 @@ open System.Net
 type SearchProxy =
     |PrivateProxy of string * int * string * string
     |PublicProxy of string * int
+    |None
     member this.GetWebProxy() =
         match this with
         |PrivateProxy (ip,port,name, pass)-> 
@@ -12,6 +13,7 @@ type SearchProxy =
             p.Credentials <- new NetworkCredential(name,pass)
             p
         |PublicProxy (ip,port) -> WebProxy(ip,port)
+        |None -> null
              
 let GetRandomUserAgents =
     let UserAgents = [|
@@ -36,12 +38,12 @@ let GetDefaultHeaders =
         ]
     fun()->headers
 
-type [<Measure>] DelayInMs
+type [<Measure>] Milliseconds 
 
 type RequestData = 
     {
        Cookies:CookieContainer
        Proxy:SearchProxy     
        Headers:seq<string*string>
-       Delay: int<DelayInMs> 
+       Delay: int<Milliseconds> 
      }

@@ -1,18 +1,23 @@
 ﻿[<AutoOpen>]
 module SearchDomains
 
-type CssSelectors = 
-    |ResultCss of string 
-    |NextPageCss of string
+type SearchResult =
+    {
+      SearchEngineName :string
+      SearchKeyword:string
+      Url:string
+      ResultPostion:int
+      HtmlSnippet:string
+     }
 
 type SearchEngine =
-      {   SearchEngineName: string
-          SearchBaseUrl : string
-          Query : string * string
-          NextPageParamName : string
-          NextPageValue:int -> int  
-          PageNum : int
-          AllOtherQueryParams: Map<string,string> 
-          CssSelectors : CssSelectors
-      }
+   {   SearchEngineName: string
+       SearchBaseUrl: string
+       Query: string * string
+       NextPageParamName: string
+       NextPageValue: int -> int  
+       PageNum: int
+       AllOtherQueryParams: Map<string,string> 
+       Results: string -> SearchResult list
+   }
       
