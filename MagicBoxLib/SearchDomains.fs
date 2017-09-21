@@ -6,6 +6,7 @@ type SearchResult =
       SearchEngineName :string
       SearchKeyword:string
       Url:string
+      LinkText:string
       ResultPostion:int
       HtmlSnippet:string
      }
