@@ -1,11 +1,12 @@
-﻿module HttpDomains
+﻿[<AutoOpen>]
+module HttpDomains
 open System
 open System.Net
 
 type SearchProxy =
     |PrivateProxy of string * int * string * string
     |PublicProxy of string * int
-    |None
+    |NoProxy
     member this.GetWebProxy() =
         match this with
         |PrivateProxy (ip,port,name, pass)-> 
@@ -13,7 +14,7 @@ type SearchProxy =
             p.Credentials <- new NetworkCredential(name,pass)
             p
         |PublicProxy (ip,port) -> WebProxy(ip,port)
-        |None -> null
+        |NoProxy -> null
              
 let GetRandomUserAgents =
     let UserAgents = [|

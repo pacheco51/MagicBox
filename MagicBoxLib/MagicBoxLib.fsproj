@@ -55,6 +55,7 @@
     <Compile Include="HttpServices.fs" />
     <Compile Include="SearchDomains.fs" />
     <Compile Include="SearchServices.fs" />
+    <Compile Include="Google.fs" />
     <Compile Include="MagicBox.fs" />
     <None Include="Script.fsx" />
     <Content Include="packages.config" />
