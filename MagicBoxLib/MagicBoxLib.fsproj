@@ -51,11 +51,9 @@
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
-    <Compile Include="HttpDomains.fs" />
-    <Compile Include="HttpServices.fs" />
-    <Compile Include="SearchDomains.fs" />
-    <Compile Include="SearchServices.fs" />
-    <Compile Include="Google.fs" />
+    <Compile Include="Http.fs" />
+    <Compile Include="Search.fs" />
+    <Compile Include="SearchEngines\Google.fs" />
     <Compile Include="MagicBox.fs" />
     <None Include="Script.fsx" />
     <Content Include="packages.config" />
