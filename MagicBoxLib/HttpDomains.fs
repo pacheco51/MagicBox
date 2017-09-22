@@ -53,5 +53,15 @@ type RequestData =
        Headers:seq<string*string>
        Delay: int<Milliseconds> 
        Method:HttpMethod 
-       UploadValues:seq<string*string>
-     }
+       UploadValues:seq<string*string> 
+    }
+
+let DefaultRequestData =
+    {
+      Cookies = new CookieContainer()
+      Proxy = NoProxy
+      Headers= GetDefaultHeaders()
+      Delay = 10000<Milliseconds>
+      Method = Get
+      UploadValues=Seq.empty        
+    }

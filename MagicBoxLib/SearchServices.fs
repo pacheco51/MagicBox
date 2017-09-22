@@ -16,5 +16,5 @@ open System.Net
 //    let searchUrl = sprintf "%s/%s" url q 
 //    ()
 
-let Scrape (engine:SearchEngine) (data:RequestData) =
-    ()
+let GetSearchUrl (engine:SearchEngine) = 
+    Result.bind

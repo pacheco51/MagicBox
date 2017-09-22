@@ -2,18 +2,18 @@
 module SearchDomains
 
 type SearchResult =
-    {
-      SearchEngineName :string
-      SearchKeyword:string
-      Url:string
-      LinkText:string 
-      ResultPostion:int option
-      HtmlSnippet:string option
-     }
+ {
+   SearchEngineName :string
+   SearchKeyword:string
+   Url:string
+   LinkText:string 
+   ResultPostion:int option
+   HtmlSnippet:string option
+  }
 
 type IntOrString =
-    |PageString of string
-    |PageInt of int
+   |PageString of string
+   |PageInt of int
 
 type SearchEngine =
    {   SearchEngineName: string
@@ -23,5 +23,7 @@ type SearchEngine =
        NextPageValue: IntOrString -> IntOrString option
        PagesToScrape: int option
        AllOtherQueryParams: Map<string,string> option
-       Parser: string -> SearchResult list option       
+       Parser: string ->  Result<SearchResult list, string>       
+       IsBlocked: (string -> bool) option
+       HttpRequestData: RequestData
    }

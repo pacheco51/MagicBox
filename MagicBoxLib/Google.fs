@@ -9,6 +9,8 @@ let Google =
       NextPageValue = function PageInt page->PageInt ((page-1)*10)|>Some | _ -> None
       PagesToScrape = Some 10
       AllOtherQueryParams = None
-      Parser = (fun html-> None)
+      Parser = (fun html-> Error "Not Implemented")
+      IsBlocked = None
+      HttpRequestData = DefaultRequestData
      }
 
