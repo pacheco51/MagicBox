@@ -52,8 +52,7 @@
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
     <Compile Include="Http.fs" />
-    <Compile Include="Search.fs" />
-    <Compile Include="SearchEngines\Google.fs" />
+    <Compile Include="SearchEngines.fs" />
     <Compile Include="MagicBox.fs" />
     <None Include="Script.fsx" />
     <Content Include="packages.config" />
