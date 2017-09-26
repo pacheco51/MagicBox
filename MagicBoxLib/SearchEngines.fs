@@ -24,7 +24,8 @@ type SearchEngine =
 let GetNextPageUrl (hrefSelector:string) =
     fun (doc:HtmlDocument) -> 
       let nodes = doc.CssSelect(hrefSelector)
-      if List.length nodes >= 0 then (nodes |>List.head).AttributeValue("href")|>Some else None
+      if List.length nodes > 0 then 
+        (nodes |>List.last).AttributeValue("href")|>Some else None
 
 let CreateParser (topTag:string) (anchor:string) (snippet:string) (curateLink:(string->string) option) (isBlocked: (HtmlDocument->bool) option)=
    fun (doc:HtmlDocument)->
@@ -72,7 +73,7 @@ let Bing = {
       QueryParamName = Some "q"
       NextPageUrlFunc = GetNextPageUrl("a.sb_pagN")
       OtherQueryParams = None
-      Parser = CreateParser "li.b_algo" "h2 > a" "div > p" None None 
+      Parser = CreateParser "li.b_algo" "h2 > a" "div > p"  None None 
       HttpRequestData = DefaultRequestData
      }
      
@@ -125,13 +126,53 @@ let Ask =
       SearchEngineName = "Ask"  
       SearchBaseUrl = "http://www.ask.com/web"  
       QueryParamName = Some "q"
-      NextPageUrlFunc = fun doc -> 
-                                let nodes = doc.CssSelect("ul.PartialWebPagination a")
-                                if List.length nodes >= 0  then 
-                                    let last = List.last nodes
-                                    last.AttributeValue("href")|> Some
-                                else None
+      NextPageUrlFunc = GetNextPageUrl("ul.PartialWebPagination a") 
       OtherQueryParams = None
       Parser = CreateParser "div.PartialSearchResults-item" "a.PartialSearchResults-item-title-link.result-link" "p.PartialSearchResults-item-abstract" None None 
       HttpRequestData = DefaultRequestData
      }
+    
+let Baidu =
+    {
+      SearchEngineName = "Baidu"  
+      SearchBaseUrl = "http://www.baidu.com/s"  
+      QueryParamName = Some "wd"
+      NextPageUrlFunc = GetNextPageUrl("div#page a")
+      OtherQueryParams = None
+      Parser = CreateParser "div.result" "h3 a" ".c-abstract" None None 
+      HttpRequestData = DefaultRequestData
+     }
+
+let sogou =
+    {
+      SearchEngineName = "sogou"  
+      SearchBaseUrl = "http://www.sogou.com/web"  
+      QueryParamName = Some "query"
+      NextPageUrlFunc = GetNextPageUrl("a.sogou_next")
+      OtherQueryParams = None
+      Parser = CreateParser "div.rb" "h3 a" "div.ft" None None 
+      HttpRequestData = DefaultRequestData
+     }
+     
+let Amazon =
+     {
+      SearchEngineName = "Amazon"  
+      SearchBaseUrl = "https://www.amazon.com/s/"  
+      QueryParamName = Some "field-keywords"
+      NextPageUrlFunc = GetNextPageUrl("a[title='Next Page']")
+      OtherQueryParams = None
+      Parser = CreateParser "li[id^='result']" "a[title]" "a[title]" None None 
+      HttpRequestData = DefaultRequestData
+     }
+     
+let Rambler =
+     {
+      SearchEngineName = "Rambler"  
+      SearchBaseUrl = "https://nova.rambler.ru/search"  
+      QueryParamName = Some "query"
+      NextPageUrlFunc = GetNextPageUrl("a.b-paging__link")
+      OtherQueryParams = None
+      Parser = CreateParser "div.b-serp-item" "a.b-serp-item__link" "p.b-serp-item__snippet" None None 
+      HttpRequestData = DefaultRequestData
+     }
+     
