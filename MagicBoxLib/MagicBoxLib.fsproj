@@ -51,6 +51,7 @@
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
+    <EmbeddedResource Include="Json\searchsites.json" />
     <Compile Include="Http.fs" />
     <Compile Include="SearchEngines.fs" />
     <Compile Include="MagicBox.fs" />

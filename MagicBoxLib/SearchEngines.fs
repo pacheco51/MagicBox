@@ -4,6 +4,24 @@ open System.Net
 open System.IO
 open FSharp.Data
 
+type Search = { 
+                Name: string
+                SearchBaseUrl : string
+                QueryName : string
+                QueryParams : (string*string)list
+                NextPage : string
+                Parent : string
+                Children : (string*string)list
+                CurateLink : string
+               }
+
+
+type SearchProvider = JsonProvider<Sample = "Json/searchsites.json", EmbeddedResource="MagicBoxLib.dll, searchsites.json">
+
+let test = SearchProvider.GetSamples()
+test|>Seq.iter (fun x-> printfn "%s" x.Name)
+
+(*
 type SearchResult =
  {
    Url:string
@@ -143,9 +161,9 @@ let Baidu =
       HttpRequestData = DefaultRequestData
      }
 
-let sogou =
+let Sogou =
     {
-      SearchEngineName = "sogou"  
+      SearchEngineName = "Sogou"  
       SearchBaseUrl = "http://www.sogou.com/web"  
       QueryParamName = Some "query"
       NextPageUrlFunc = GetNextPageUrl("a.sogou_next")
@@ -175,4 +193,4 @@ let Rambler =
       Parser = CreateParser "div.b-serp-item" "a.b-serp-item__link" "p.b-serp-item__snippet" None None 
       HttpRequestData = DefaultRequestData
      }
-     
+*)     

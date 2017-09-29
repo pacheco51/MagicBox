@@ -1,0 +1,182 @@
+[
+  {
+    "Name": "Google.com",
+    "SearchBaseUrl": "https://www.google.com/search",
+    "QueryName": "q",
+    "QueryParams": [
+      {
+        "Item1": "gbv",
+        "Item2": "1"
+      },
+      {
+        "Item1": "Sa",
+        "Item2": "N"
+      }
+    ],
+    "NextPage": "div#foot td.b a",
+    "Parent": "div#ires div.g",
+    "Children": [
+      {
+        "Item1": "Link",
+        "Item2": "h3 > a"
+      },
+      {
+        "Item1": "Discription",
+        "Item2": "span.st"
+      }
+    ],
+    "CurateLink": "(?<=\\/url\\?q\\=).*?(?=\\&sa\\=)"
+  },
+  {
+    "Name": "Bing",
+    "SearchBaseUrl": "http://www.bing.com/search",
+    "QueryName": "q",
+    "QueryParams": [],
+    "NextPage": "a.sb_pagN",
+    "Parent": "li.b_algo",
+    "Children": [
+      {
+        "Item1": "Link",
+        "Item2": "h2 > a"
+      },
+      {
+        "Item1": "Discription",
+        "Item2": "div > p"
+      }
+    ],
+    "CurateLink": ""
+  },
+  {
+    "Name": "Yandex",
+    "SearchBaseUrl": "https://www.yandex.com/search/",
+    "QueryName": "text",
+    "QueryParams": [],
+    "NextPage": "a.pager__item.pager__item_kind_next",
+    "Parent": "li.serp-item > div.organic",
+    "Children": [
+      {
+        "Item1": "Link",
+        "Item2": "h2 > a"
+      },
+      {
+        "Item1": "Discription",
+        "Item2": "div.organic__text"
+      }
+    ],
+    "CurateLink": ""
+  },
+  {
+    "Name": "DuckDuckGo",
+    "SearchBaseUrl": "https://duckduckgo.com/html",
+    "QueryName": "q",
+    "QueryParams": [],
+    "NextPage": "div.nav-link > form > input",
+    "Parent": "div.links_main.links_deep.result__body",
+    "Children": [
+      {
+        "Item1": "Link",
+        "Item2": "a.result__a"
+      },
+      {
+        "Item1": "Discription",
+        "Item2": "a.result__snippet"
+      }
+    ],
+    "CurateLink": ""
+  },
+  {
+    "Name": "Ask",
+    "SearchBaseUrl": "http://www.ask.com/web",
+    "QueryName": "q",
+    "QueryParams": [],
+    "NextPage": "ul.PartialWebPagination a",
+    "Parent": "div.PartialSearchResults-item",
+    "Children": [
+      {
+        "Item1": "Link",
+        "Item2": "a.PartialSearchResults-item-title-link.result-link"
+      },
+      {
+        "Item1": "Discription",
+        "Item2": "p.PartialSearchResults-item-abstract"
+      }
+    ],
+    "CurateLink": ""
+  },
+  {
+    "Name": "Baidu",
+    "SearchBaseUrl": "http://www.baidu.com/s",
+    "QueryName": "wd",
+    "QueryParams": [],
+    "NextPage": "div#page a",
+    "Parent": "div.result",
+    "Children": [
+      {
+        "Item1": "Link",
+        "Item2": "h3 a"
+      },
+      {
+        "Item1": "Discription",
+        "Item2": ".c-abstract"
+      }
+    ],
+    "CurateLink": ""
+  },
+  {
+    "Name": "Sogou",
+    "SearchBaseUrl": "http://www.sogou.com/web",
+    "QueryName": "query",
+    "QueryParams": [],
+    "NextPage": "a.sogou_next",
+    "Parent": "div.rb",
+    "Children": [
+      {
+        "Item1": "Link",
+        "Item2": "h3 a"
+      },
+      {
+        "Item1": "Discription",
+        "Item2": "div.ft"
+      }
+    ],
+    "CurateLink": ""
+  },
+  {
+    "Name": "Amazon",
+    "SearchBaseUrl": "https://www.amazon.com/s/",
+    "QueryName": "field-keywords",
+    "QueryParams": [],
+    "NextPage": "a[title='Next Page']",
+    "Parent": "li[id^='result']",
+    "Children": [
+      {
+        "Item1": "Link",
+        "Item2": "a[title]"
+      },
+      {
+        "Item1": "Discription",
+        "Item2": "a[title]"
+      }
+    ],
+    "CurateLink": ""
+  },
+  {
+    "Name": "Rambler",
+    "SearchBaseUrl": "https://nova.rambler.ru/search",
+    "QueryName": "query",
+    "QueryParams": [],
+    "NextPage": "a.b-paging__link",
+    "Parent": "div.b-serp-item",
+    "Children": [
+      {
+        "Item1": "Link",
+        "Item2": "a.b-serp-item__link"
+      },
+      {
+        "Item1": "Discription",
+        "Item2": "p.b-serp-item__snippet"
+      }
+    ],
+    "CurateLink": ""
+  }
+]
