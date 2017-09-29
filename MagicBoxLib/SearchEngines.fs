@@ -4,20 +4,8 @@ open System.Net
 open System.IO
 open FSharp.Data
 
-type Search = { 
-                Name: string
-                SearchBaseUrl : string
-                QueryName : string
-                QueryParams : (string*string)list
-                NextPage : string
-                Parent : string
-                Children : (string*string)list
-                CurateLink : string
-               }
-
 
 type SearchProvider = JsonProvider<Sample = "Json/searchsites.json", EmbeddedResource="MagicBoxLib.dll, searchsites.json">
-
 let test = SearchProvider.GetSamples()
 test|>Seq.iter (fun x-> printfn "%s" x.Name)
 
